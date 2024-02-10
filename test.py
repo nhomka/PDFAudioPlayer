@@ -1,4 +1,5 @@
-import from SpeakerHelper import SpeakerHelper, PyPDF2
+from SpeakerHelper import SpeakerHelper
+import PyPDF2
 
 pdfFileName = "Nathan-Homka-Resume.pdf"
 pdfReader = PyPDF2.PdfReader(pdfFileName)
@@ -15,3 +16,4 @@ for page in pdfReader.pages:
     speaker.speak(text)
     
 speaker.stop()
+
