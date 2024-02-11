@@ -1,6 +1,7 @@
 import sys
 import argparse
 from SpeakerHelper import SpeakerHelper
+from DocumentReader import DocumentReader
 import PyPDF2
 
 parser = argparse.ArgumentParser(description='Speak a file')
@@ -19,7 +20,7 @@ else:
     print('You must provide a filename')
     sys.exit(1)
 
-pdfReader = PyPDF2.PdfReader(pdfFileName)
+reader = DocumentReader()
 speaker = SpeakerHelper()      
 
 if args.voice in [0, 1]:
@@ -30,10 +31,9 @@ if 10 <= args.rate <= 500:
 if 0 <= args.volume <= 1.0:
     speaker.set_volume(args.volume)
 
-for page in pdfReader.pages:
-    text = page.extract_text()
-    clean_text = text.strip().replace('\n', ' ')
-    print(clean_text)
-    speaker.speak(text)
+reader.open(pdfFileName)
+pdf_text = reader.convert_to_text()
+print(pdf_text)
+speaker.speak(pdf_text)
     
 speaker.stop()
