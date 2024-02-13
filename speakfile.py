@@ -2,7 +2,6 @@ import sys
 import argparse
 from SpeakerHelper import SpeakerHelper
 from DocumentReader import DocumentReader
-import PyPDF2
 
 parser = argparse.ArgumentParser(description='Speak a file')
 
