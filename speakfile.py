@@ -1,6 +1,6 @@
 import sys
 import argparse
-from SpeakerHelper import SpeakerHelper
+from TTSHelper import SpeakerHelper
 from DocumentReader import DocumentReader
 
 parser = argparse.ArgumentParser(description='Speak a file')
@@ -12,9 +12,9 @@ parser.add_argument('--volume', type=float, default=1.0, help='Volume, range 0.0
 
 args = parser.parse_args()
 
-pdfFileName = ""
+pdf_filename = ""
 if args.filename:
-    pdfFileName = args.filename
+    pdf_filename = args.filename
 else:
     print('You must provide a filename')
     sys.exit(1)
@@ -30,7 +30,7 @@ if 10 <= args.rate <= 500:
 if 0 <= args.volume <= 1.0:
     speaker.set_volume(args.volume)
 
-reader.open(pdfFileName)
+reader.open(pdf_filename)
 pdf_text = reader.convert_to_text()
 print(pdf_text)
 speaker.speak(pdf_text)
