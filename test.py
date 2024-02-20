@@ -21,16 +21,8 @@ speaker.stop()
 
 audio_controller = AudioController()
 audio_controller.play(wav_filename)
+audio_controller.close()
 
-while True:
-    print("Press 'p to pause \nPress 'r' to resume \nPress 'e' to exit the program")
-    query = input("  ")
-      
-    if query == 'p':
-        audio_controller.pause() 
-    elif query == 'r':
-        audio_controller.unpause() 
-    elif query == 'e':
-        audio_controller.stop()
-        break
+print("Program ended.")
+
 
